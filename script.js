@@ -1,33 +1,35 @@
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-
-menuBtn.addEventListener("click", () => {
-  mobileMenu.classList.toggle("show");
-});
-
+const menuToggle = document.getElementById("menuToggle");
+const mobileNav = document.getElementById("mobileNav");
 const whatsappBtn = document.getElementById("whatsappBtn");
-const nameInput = document.getElementById("nameInput");
-const countryInput = document.getElementById("countryInput");
-const itemInput = document.getElementById("itemInput");
-const methodInput = document.getElementById("methodInput");
-const messageInput = document.getElementById("messageInput");
 
-whatsappBtn.addEventListener("click", () => {
-  const name = nameInput.value || "Not provided";
-  const country = countryInput.value || "Not sure yet";
-  const item = itemInput.value || "Not provided";
-  const method = methodInput.value || "Not sure yet";
-  const message = messageInput.value || "No extra details";
+if (menuToggle && mobileNav) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mobileNav.classList.toggle("show");
+    document.body.classList.toggle("menu-open", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.textContent = isOpen ? "Close" : "Menu";
+  });
 
-  const text = `Hello China Loop, I want to request shipping to Lebanon.
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileNav.classList.remove("show");
+      document.body.classList.remove("menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.textContent = "Menu";
+    });
+  });
+}
 
-Name: ${name}
-Shipping from: ${country}
-Item: ${item}
-Shipping method: ${method}
-Details: ${message}`;
+if (whatsappBtn) {
+  whatsappBtn.addEventListener("click", () => {
+    const name = document.getElementById("nameInput")?.value.trim() || "Not provided";
+    const country = document.getElementById("countryInput")?.value.trim() || "Not provided";
+    const item = document.getElementById("itemInput")?.value.trim() || "Not provided";
+    const method = document.getElementById("methodInput")?.value || "Not sure yet";
+    const message = document.getElementById("messageInput")?.value.trim() || "No extra details";
 
-  const encodedText = encodeURIComponent(text);
+    const whatsappMessage = `Hello China Loop, I want to request a shipment.%0A%0AName: ${encodeURIComponent(name)}%0AShipping from: ${encodeURIComponent(country)}%0AItem: ${encodeURIComponent(item)}%0AMethod: ${encodeURIComponent(method)}%0AExtra details: ${encodeURIComponent(message)}`;
 
-  window.open(`https://wa.me/96179059704?text=${encodedText}`, "_blank");
-});
+    window.open(`https://wa.me/96179059704?text=${whatsappMessage}`, "_blank");
+  });
+}
