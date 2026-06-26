@@ -1,35 +1,58 @@
-const menuToggle = document.getElementById("menuToggle");
-const mobileNav = document.getElementById("mobileNav");
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
 const whatsappBtn = document.getElementById("whatsappBtn");
 
-if (menuToggle && mobileNav) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = mobileNav.classList.toggle("show");
-    document.body.classList.toggle("menu-open", isOpen);
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.textContent = isOpen ? "Close" : "Menu";
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("show");
+
+    if (mobileMenu.classList.contains("show")) {
+      menuBtn.textContent = "Close";
+    } else {
+      menuBtn.textContent = "Menu";
+    }
   });
 
-  mobileNav.querySelectorAll("a").forEach((link) => {
+  const mobileLinks = mobileMenu.querySelectorAll("a");
+
+  mobileLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      mobileNav.classList.remove("show");
-      document.body.classList.remove("menu-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.textContent = "Menu";
+      mobileMenu.classList.remove("show");
+      menuBtn.textContent = "Menu";
     });
   });
 }
 
 if (whatsappBtn) {
   whatsappBtn.addEventListener("click", () => {
-    const name = document.getElementById("nameInput")?.value.trim() || "Not provided";
-    const country = document.getElementById("countryInput")?.value.trim() || "Not provided";
-    const item = document.getElementById("itemInput")?.value.trim() || "Not provided";
-    const method = document.getElementById("methodInput")?.value || "Not sure yet";
-    const message = document.getElementById("messageInput")?.value.trim() || "No extra details";
+    const name = document.getElementById("nameInput").value.trim();
+    const country = document.getElementById("countryInput").value.trim();
+    const item = document.getElementById("itemInput").value.trim();
+    const method = document.getElementById("methodInput").value;
+    const message = document.getElementById("messageInput").value.trim();
 
-    const whatsappMessage = `Hello China Loop, I want to request a shipment.%0A%0AName: ${encodeURIComponent(name)}%0AShipping from: ${encodeURIComponent(country)}%0AItem: ${encodeURIComponent(item)}%0AMethod: ${encodeURIComponent(method)}%0AExtra details: ${encodeURIComponent(message)}`;
+    const finalName = name || "Not provided";
+    const finalCountry = country || "Not provided";
+    const finalItem = item || "Not provided";
+    const finalMethod = method || "Not sure yet";
+    const finalMessage = message || "No extra details provided";
 
-    window.open(`https://wa.me/96179059704?text=${whatsappMessage}`, "_blank");
+    const whatsappText = [
+      "Hello China Loop,",
+      "",
+      "I want to request a shipping quote.",
+      "",
+      `Name: ${finalName}`,
+      `Shipping from: ${finalCountry}`,
+      `Item: ${finalItem}`,
+      `Preferred method: ${finalMethod}`,
+      `Extra details: ${finalMessage}`,
+      "",
+      "Thank you."
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/96179059704?text=${encodeURIComponent(whatsappText)}`;
+
+    window.open(whatsappUrl, "_blank");
   });
 }
