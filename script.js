@@ -56,3 +56,16 @@ if (whatsappBtn) {
     window.open(whatsappUrl, "_blank");
   });
 }
+
+const introVideo = document.getElementById("introVideo");
+
+if (introVideo) {
+  introVideo.muted = true;
+  introVideo.playsInline = true;
+
+  setTimeout(() => {
+    introVideo.play().catch((error) => {
+      console.log("Video autoplay failed:", error);
+    });
+  }, 1000);
+}

@@ -1,25 +1,23 @@
-# China Loop Professional Animated Landing Page
+# China Loop Dark Theme Website
 
-Files included:
-- index.html
-- styles.css
-- script.js
-- images/.gitkeep
+This version uses dark mode as the default theme.
 
-Add your real photos inside the `images` folder using these exact names:
+Main changes:
+- Dark navy/blue/green color palette
+- Dark navbar, cards, forms, service sections, routes section, and footer
+- Better contrast for all writing
+- Modern glass-style cards without looking too artificial
+- Fixed missing `routes-warehouse.jpg` by including a fallback copy
 
-- china-loop-logo.png
-- hero-freight.jpg
-- ddp-shipping.jpg
-- air-freight.jpg
-- sea-freight.jpg
-- online-orders.jpg
-- routes-warehouse.jpg
-
-Then upload/push the project to GitHub.
+To use:
+1. Replace your current project files with these files.
+2. Keep your images inside the `images` folder.
+3. Push to GitHub.
 
 Recommended commands:
 
+```bash
 git add .
-git commit -m "Add professional animated landing page"
+git commit -m "Add dark theme website design"
 git push origin main
+```

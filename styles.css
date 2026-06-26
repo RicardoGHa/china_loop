@@ -5,24 +5,40 @@
 }
 
 :root {
-  --navy: #0f172a;
-  --navy-soft: #1e293b;
-  --blue: #1d4ed8;
-  --blue-dark: #1e40af;
+  color-scheme: dark;
+
+  --bg-main: #07111f;
+  --bg-section: #0b1626;
+  --bg-section-soft: #0f1b2d;
+  --bg-card: #101f33;
+  --bg-card-soft: #12243a;
+  --bg-elevated: rgba(16, 31, 51, 0.82);
+
+  --navy: #f8fafc;
+  --navy-soft: #dbeafe;
+  --blue: #60a5fa;
+  --blue-dark: #3b82f6;
   --sky: #38bdf8;
-  --green: #16a34a;
+  --green: #22c55e;
+  --green-dark: #16a34a;
   --white: #ffffff;
-  --off-white: #f8fafc;
-  --gray-50: #f9fafb;
-  --gray-100: #f1f5f9;
-  --gray-200: #e2e8f0;
+
+  --off-white: #07111f;
+  --gray-50: #0b1626;
+  --gray-100: #101f33;
+  --gray-200: #1f334e;
   --gray-400: #94a3b8;
-  --gray-500: #64748b;
-  --gray-700: #334155;
-  --text: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
-  --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+  --gray-500: #9fb3c8;
+  --gray-700: #d8e3f3;
+
+  --text: #f8fafc;
+  --muted: #9fb3c8;
+  --muted-strong: #cbd5e1;
+  --border: rgba(148, 163, 184, 0.18);
+  --border-strong: rgba(148, 163, 184, 0.32);
+
+  --shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+  --shadow-soft: 0 18px 55px rgba(0, 0, 0, 0.24);
 }
 
 html {
@@ -31,7 +47,10 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: var(--off-white);
+  background:
+    radial-gradient(circle at 14% 6%, rgba(96, 165, 250, 0.16), transparent 28%),
+    radial-gradient(circle at 86% 18%, rgba(34, 197, 94, 0.12), transparent 30%),
+    linear-gradient(180deg, #06101d 0%, #07111f 45%, #081525 100%);
   color: var(--text);
   line-height: 1.5;
 }
@@ -63,9 +82,9 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(7, 17, 31, 0.86);
   border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(18px);
 }
 
 .nav-content {
@@ -86,12 +105,13 @@ textarea {
   height: 52px;
   border-radius: 14px;
   object-fit: cover;
-  background: var(--white);
-  border: 1px solid var(--border);
+  background: #ffffff;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.22);
 }
 
 .logo h1 {
-  color: var(--navy);
+  color: var(--text);
   font-size: 20px;
   line-height: 1.1;
   letter-spacing: -0.4px;
@@ -110,37 +130,38 @@ textarea {
 }
 
 .desktop-menu a {
-  color: var(--gray-700);
+  color: var(--muted-strong);
   font-size: 14px;
   font-weight: 700;
   transition: 0.2s ease;
 }
 
 .desktop-menu a:hover {
-  color: var(--blue);
+  color: var(--white);
 }
 
 .nav-btn {
   min-height: 48px;
   padding: 13px 20px;
   border-radius: 999px;
-  background: var(--green);
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
   color: #ffffff !important;
   font-weight: 900;
-  box-shadow: 0 18px 40px rgba(22, 163, 74, 0.28);
+  box-shadow: 0 18px 40px rgba(34, 197, 94, 0.22);
   transition: 0.2s ease;
 }
 
 .nav-btn:hover {
   transform: translateY(-3px);
   color: #ffffff !important;
+  box-shadow: 0 22px 52px rgba(34, 197, 94, 0.3);
 }
 
 .menu-btn {
   display: none;
-  border: 1px solid var(--border);
-  background: var(--white);
-  color: var(--navy);
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
   border-radius: 12px;
   padding: 10px 15px;
   font-weight: 800;
@@ -153,11 +174,11 @@ textarea {
   gap: 14px;
   padding: 18px 24px 24px;
   border-top: 1px solid var(--border);
-  background: var(--white);
+  background: rgba(7, 17, 31, 0.96);
 }
 
 .mobile-menu a {
-  color: var(--navy);
+  color: var(--white);
   font-weight: 800;
 }
 
@@ -172,7 +193,7 @@ textarea {
 }
 
 .eyebrow {
-  color: var(--blue);
+  color: var(--sky);
   font-size: 13px;
   font-weight: 900;
   text-transform: uppercase;
@@ -194,7 +215,7 @@ textarea {
 .section-heading h2,
 .routes-copy h2,
 .contact-copy h2 {
-  color: var(--navy);
+  color: var(--text);
   font-size: clamp(34px, 5vw, 54px);
   line-height: 1.05;
   letter-spacing: -1.8px;
@@ -224,24 +245,25 @@ textarea {
 }
 
 .primary-btn {
-  background: var(--blue);
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
   color: var(--white);
-  box-shadow: 0 16px 35px rgba(29, 78, 216, 0.22);
+  box-shadow: 0 18px 42px rgba(59, 130, 246, 0.24);
 }
 
 .primary-btn:hover {
-  background: var(--blue-dark);
   transform: translateY(-2px);
+  box-shadow: 0 24px 52px rgba(59, 130, 246, 0.32);
 }
 
 .secondary-btn {
-  border: 1px solid var(--border);
-  color: var(--navy);
-  background: var(--white);
+  border: 1px solid var(--border-strong);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .secondary-btn:hover {
-  border-color: var(--navy);
+  border-color: rgba(255, 255, 255, 0.46);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
 }
 
@@ -250,7 +272,10 @@ textarea {
 .hero {
   position: relative;
   padding: 76px 0 90px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  background:
+    radial-gradient(circle at 80% 8%, rgba(96, 165, 250, 0.18), transparent 28%),
+    radial-gradient(circle at 18% 90%, rgba(34, 197, 94, 0.1), transparent 26%),
+    linear-gradient(180deg, #07111f 0%, #0b1626 100%);
   overflow: hidden;
 }
 
@@ -262,7 +287,8 @@ textarea {
   width: 520px;
   height: 520px;
   border-radius: 999px;
-  background: rgba(29, 78, 216, 0.08);
+  background: rgba(96, 165, 250, 0.12);
+  filter: blur(2px);
 }
 
 .hero::after {
@@ -273,7 +299,7 @@ textarea {
   width: 520px;
   height: 520px;
   border-radius: 999px;
-  background: rgba(56, 189, 248, 0.12);
+  background: rgba(34, 197, 94, 0.08);
 }
 
 .hero-grid {
@@ -287,7 +313,7 @@ textarea {
 
 .hero-copy h2 {
   max-width: 650px;
-  color: var(--navy);
+  color: var(--text);
   font-size: clamp(42px, 6.2vw, 72px);
   line-height: 0.98;
   letter-spacing: -2.8px;
@@ -319,14 +345,14 @@ textarea {
 .hero-points div {
   padding: 18px;
   border: 1px solid var(--border);
-  background: var(--white);
+  background: rgba(16, 31, 51, 0.72);
   border-radius: 18px;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+  box-shadow: var(--shadow-soft);
 }
 
 .hero-points strong {
   display: block;
-  color: var(--navy);
+  color: var(--white);
   font-size: 18px;
   margin-bottom: 4px;
 }
@@ -342,7 +368,8 @@ textarea {
   border-radius: 30px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  background: var(--gray-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
 }
 
 .hero-visual img {
@@ -351,13 +378,16 @@ textarea {
   min-height: 560px;
   object-fit: cover;
   display: block;
+  filter: saturate(0.95) contrast(1.02);
 }
 
 .hero-visual::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0.48));
+  background:
+    linear-gradient(180deg, rgba(7, 17, 31, 0.04), rgba(7, 17, 31, 0.68)),
+    radial-gradient(circle at 80% 10%, rgba(96, 165, 250, 0.18), transparent 35%);
 }
 
 .hero-card {
@@ -368,14 +398,16 @@ textarea {
   z-index: 2;
   padding: 22px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--navy);
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+  background: rgba(7, 17, 31, 0.78);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(18px);
 }
 
 .hero-card span {
   display: block;
-  color: var(--blue);
+  color: var(--sky);
   font-size: 13px;
   font-weight: 900;
   text-transform: uppercase;
@@ -385,6 +417,7 @@ textarea {
 
 .hero-card strong {
   display: block;
+  color: var(--white);
   font-size: 26px;
   letter-spacing: -0.6px;
   margin-bottom: 8px;
@@ -398,7 +431,7 @@ textarea {
 /* Services */
 
 .services-section {
-  background: var(--white);
+  background: linear-gradient(180deg, #0b1626 0%, #07111f 100%);
 }
 
 .services-grid {
@@ -410,15 +443,16 @@ textarea {
 .service-card {
   overflow: hidden;
   border-radius: 24px;
-  background: var(--white);
+  background: var(--bg-card);
   border: 1px solid var(--border);
-  box-shadow: 0 16px 45px rgba(15, 23, 42, 0.07);
+  box-shadow: var(--shadow-soft);
   transition: 0.24s ease;
 }
 
 .service-card:hover {
   transform: translateY(-7px);
-  box-shadow: 0 26px 65px rgba(15, 23, 42, 0.12);
+  border-color: rgba(96, 165, 250, 0.36);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
 }
 
 .service-card img {
@@ -426,7 +460,8 @@ textarea {
   height: 190px;
   object-fit: cover;
   display: block;
-  background: var(--gray-200);
+  background: var(--bg-card-soft);
+  filter: saturate(0.92) contrast(1.04);
 }
 
 .service-content {
@@ -435,14 +470,14 @@ textarea {
 
 .service-content span {
   display: inline-flex;
-  color: var(--blue);
+  color: var(--sky);
   font-size: 13px;
   font-weight: 900;
   margin-bottom: 14px;
 }
 
 .service-content h3 {
-  color: var(--navy);
+  color: var(--white);
   font-size: 21px;
   margin-bottom: 12px;
   letter-spacing: -0.4px;
@@ -459,7 +494,7 @@ textarea {
 .routes-section {
   position: relative;
   overflow: hidden;
-  background: var(--navy);
+  background: #07111f;
   color: var(--white);
 }
 
@@ -467,10 +502,12 @@ textarea {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg,
-      rgba(15, 23, 42, 0.95) 0%,
-      rgba(15, 23, 42, 0.88) 45%,
-      rgba(15, 23, 42, 0.68) 100%),
+    linear-gradient(
+      90deg,
+      rgba(7, 17, 31, 0.96) 0%,
+      rgba(7, 17, 31, 0.9) 45%,
+      rgba(7, 17, 31, 0.74) 100%
+    ),
     url("images/routes-warehouse.jpg");
   background-size: cover;
   background-position: center;
@@ -483,8 +520,8 @@ textarea {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.24), transparent 30%),
-    radial-gradient(circle at 20% 90%, rgba(56, 189, 248, 0.16), transparent 32%);
+    radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.2), transparent 30%),
+    radial-gradient(circle at 20% 90%, rgba(34, 197, 94, 0.12), transparent 32%);
   pointer-events: none;
 }
 
@@ -503,7 +540,7 @@ textarea {
 
 .routes-copy p {
   max-width: 560px;
-  color: #cbd5e1;
+  color: var(--muted-strong);
 }
 
 .routes-note {
@@ -513,8 +550,8 @@ textarea {
   margin-top: 28px;
   padding: 18px 20px;
   max-width: 520px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  background: rgba(16, 31, 51, 0.7);
   border-radius: 18px;
   backdrop-filter: blur(14px);
 }
@@ -525,15 +562,15 @@ textarea {
   flex: 0 0 auto;
   margin-top: 7px;
   border-radius: 999px;
-  background: var(--sky);
-  box-shadow: 0 0 0 8px rgba(56, 189, 248, 0.14);
+  background: var(--green);
+  box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.14);
 }
 
 .routes-note p {
   margin: 0;
   font-size: 14px;
   line-height: 1.7;
-  color: #e2e8f0;
+  color: #dbeafe;
 }
 
 .route-map-card {
@@ -541,10 +578,11 @@ textarea {
   min-height: 460px;
   padding: 34px;
   border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background:
+    linear-gradient(145deg, rgba(16, 31, 51, 0.9), rgba(15, 35, 58, 0.58));
   backdrop-filter: blur(18px);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
   overflow: hidden;
 }
 
@@ -554,10 +592,10 @@ textarea {
   inset: 18px;
   border-radius: 22px;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
   background-size: 42px 42px;
-  opacity: 0.55;
+  opacity: 0.65;
 }
 
 .route-origin-list {
@@ -572,11 +610,12 @@ textarea {
 .route-origin-list span {
   padding: 11px 15px;
   border-radius: 999px;
-  color: var(--navy);
-  background: var(--white);
+  color: #eaf3ff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   font-size: 14px;
   font-weight: 800;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2);
   animation: routeChipFloat 4s ease-in-out infinite;
   animation-delay: calc(var(--i) * 0.14s);
 }
@@ -595,7 +634,7 @@ textarea {
   position: relative;
   height: 3px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.16);
   overflow: hidden;
 }
 
@@ -603,7 +642,7 @@ textarea {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, var(--sky), var(--white), transparent);
+  background: linear-gradient(90deg, transparent, var(--green), var(--sky), transparent);
   transform: translateX(-100%);
   animation: routeLineMove 3.4s ease-in-out infinite;
 }
@@ -625,13 +664,13 @@ textarea {
   min-width: 172px;
   padding: 16px 18px;
   border-radius: 18px;
-  background: rgba(15, 23, 42, 0.72);
+  background: rgba(7, 17, 31, 0.74);
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .route-label small {
   display: block;
-  color: var(--gray-400);
+  color: var(--muted);
   font-size: 12px;
   margin-bottom: 5px;
 }
@@ -648,15 +687,16 @@ textarea {
   margin-left: auto;
   padding: 24px 28px;
   border-radius: 24px;
-  color: var(--navy);
-  background: var(--white);
-  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.2);
+  color: var(--white);
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.92), rgba(59, 130, 246, 0.88));
+  box-shadow: 0 22px 65px rgba(34, 197, 94, 0.18);
   animation: destinationPulse 4s ease-in-out infinite;
 }
 
 .route-destination span {
   display: block;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 13px;
   font-weight: 700;
   margin-bottom: 6px;
@@ -672,7 +712,7 @@ textarea {
 /* Process */
 
 .process-section {
-  background: var(--gray-50);
+  background: #07111f;
 }
 
 .process-grid {
@@ -684,20 +724,20 @@ textarea {
 .process-card {
   padding: 32px;
   border-radius: 24px;
-  background: var(--white);
+  background: var(--bg-card);
   border: 1px solid var(--border);
-  box-shadow: 0 16px 45px rgba(15, 23, 42, 0.06);
+  box-shadow: var(--shadow-soft);
 }
 
 .process-card span {
   display: inline-flex;
-  color: var(--blue);
+  color: var(--sky);
   font-weight: 900;
   margin-bottom: 22px;
 }
 
 .process-card h3 {
-  color: var(--navy);
+  color: var(--white);
   font-size: 23px;
   margin-bottom: 12px;
   letter-spacing: -0.5px;
@@ -711,7 +751,9 @@ textarea {
 /* Contact */
 
 .contact-section {
-  background: var(--white);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(96, 165, 250, 0.12), transparent 28%),
+    linear-gradient(180deg, #0b1626 0%, #07111f 100%);
 }
 
 .contact-grid {
@@ -731,30 +773,31 @@ textarea {
   gap: 12px;
   padding: 26px;
   border-radius: 22px;
-  background: var(--gray-50);
+  background: rgba(16, 31, 51, 0.82);
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
 }
 
 .contact-details p {
-  color: var(--gray-700);
+  color: var(--muted-strong);
   font-size: 15px;
 }
 
 .contact-details strong {
-  color: var(--navy);
+  color: var(--white);
 }
 
 .contact-details a {
-  color: var(--blue);
+  color: var(--sky);
   font-weight: 800;
 }
 
 .contact-form {
   padding: 30px;
   border-radius: 26px;
-  background: var(--gray-50);
+  background: rgba(16, 31, 51, 0.9);
   border: 1px solid var(--border);
-  box-shadow: 0 18px 55px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--shadow);
 }
 
 .form-row {
@@ -764,7 +807,7 @@ textarea {
 }
 
 .form-row label {
-  color: var(--navy);
+  color: var(--white);
   font-size: 14px;
   font-weight: 800;
 }
@@ -774,12 +817,22 @@ textarea {
 .form-row textarea {
   width: 100%;
   border: 1px solid var(--border);
-  background: var(--white);
-  color: var(--navy);
+  background: rgba(7, 17, 31, 0.72);
+  color: var(--white);
   border-radius: 14px;
   padding: 14px 15px;
   outline: none;
   transition: 0.2s ease;
+}
+
+.form-row input::placeholder,
+.form-row textarea::placeholder {
+  color: rgba(203, 213, 225, 0.56);
+}
+
+.form-row select option {
+  background: #07111f;
+  color: var(--white);
 }
 
 .form-row textarea {
@@ -791,24 +844,25 @@ textarea {
 .form-row select:focus,
 .form-row textarea:focus {
   border-color: var(--blue);
-  box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.09);
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.14);
 }
 
 .contact-form button {
   width: 100%;
   border: none;
-  background: var(--blue);
+  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
   color: var(--white);
   border-radius: 999px;
   padding: 16px 20px;
   font-weight: 900;
   cursor: pointer;
   transition: 0.2s ease;
+  box-shadow: 0 18px 42px rgba(59, 130, 246, 0.22);
 }
 
 .contact-form button:hover {
-  background: var(--blue-dark);
   transform: translateY(-2px);
+  box-shadow: 0 24px 52px rgba(59, 130, 246, 0.3);
 }
 
 .email-link {
@@ -820,15 +874,16 @@ textarea {
 }
 
 .email-link:hover {
-  color: var(--blue);
+  color: var(--sky);
 }
 
 /* Footer */
 
 .footer {
   padding: 30px 0;
-  background: var(--navy);
-  color: #cbd5e1;
+  background: #050c16;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
 }
 
 .footer-content {
@@ -851,15 +906,16 @@ textarea {
   min-height: 48px;
   padding: 13px 20px;
   border-radius: 999px;
-  background: var(--green);
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
   color: var(--white);
   font-weight: 900;
-  box-shadow: 0 18px 40px rgba(22, 163, 74, 0.28);
+  box-shadow: 0 18px 40px rgba(34, 197, 94, 0.26);
   transition: 0.2s ease;
 }
 
 .whatsapp-float:hover {
   transform: translateY(-3px);
+  box-shadow: 0 22px 52px rgba(34, 197, 94, 0.34);
 }
 
 /* Animations */
@@ -875,7 +931,6 @@ textarea {
 }
 
 @keyframes routeChipFloat {
-
   0%,
   100% {
     transform: translateY(0);
@@ -927,16 +982,15 @@ textarea {
 }
 
 @keyframes destinationPulse {
-
   0%,
   100% {
     transform: translateY(0);
-    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 22px 65px rgba(34, 197, 94, 0.18);
   }
 
   50% {
     transform: translateY(-5px);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 30px 78px rgba(59, 130, 246, 0.22);
   }
 }
 
@@ -1086,8 +1140,90 @@ textarea {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+.video-section {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(79, 140, 255, 0.12), transparent 30%),
+    var(--bg-soft);
+}
 
+.video-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.video-copy h2 {
+  max-width: 560px;
+  color: var(--text);
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -1.7px;
+  margin-bottom: 18px;
+}
+
+.video-copy p {
+  max-width: 540px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.instagram-video-card {
+  width: min(420px, 100%);
+  margin-left: auto;
+  padding: 14px;
+  border-radius: 32px;
+  background: #0b1626;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-medium);
+}
+
+.instagram-video-card video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  display: block;
+  object-fit: cover;
+  border-radius: 24px;
+  background: #000;
+}
+
+.instagram-video-card video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  display: block;
+  object-fit: cover;
+  border-radius: 24px;
+  background: #000;
+}
+
+@media (max-width: 1000px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .instagram-video-card {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .instagram-video-card {
+    width: min(340px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 26px;
+  }
+
+  .instagram-video-card video {
+    border-radius: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .routes-bg,
   .route-origin-list span,
   .route-line::before,
@@ -1098,5 +1234,18 @@ textarea {
 
   html {
     scroll-behavior: auto;
+  }
+}
+@media (max-width: 650px) {
+  .instagram-video-card {
+    width: min(340px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 26px;
+  }
+
+  .instagram-video-card video {
+    border-radius: 20px;
   }
 }
